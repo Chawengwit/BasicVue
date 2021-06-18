@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Essential</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Link js in main.js by variable hello_vue used {{ }} -->
+        <!-- Hover your mouse!! -->
+        <h1 v-bind:title="message">{{ title }}</h1>
+        <div>
+            <img    
+                v-bind:src="image"
+                v-bind:style="imgSize"
+            >
+        </div>
+        <!-- V if -->
+        <h3 v-if="onStock">Available Order</h3>
+        <h3 v-else="onStock">Comming soon</h3>
+        <!-- V for -->
+        <div>
+            <ul>
+                <li style="cursor: pointer;"
+                    v-for="(item, index) in coffeeList" :key="item.id"
+                    v-on:click="updateIndex(index)"
+                >
+                    {{ item.product }}
+                </li>
+            </ul>
+        </div>
+        {{ qty }}
+        <button v-on:click="handleOrder">Order</button>
+        <button v-on:click="handleCancle">Cancle</button>
+    </div>
+
+    <!-- Import app -->
+    <script src="main.js"></script>
+    <!-- Mount app -->
+    <script>
+        const mountedApp = app.mount('#app')
+    </script>
+
+</body>
+</html>
